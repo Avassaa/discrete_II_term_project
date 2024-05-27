@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import random
 import string
 
-
+#Method to generate 2 isomorphic graphs
 def generate_isomorphic_graphs(num_nodes):
     G1 = nx.fast_gnp_random_graph(num_nodes, 0.45)
     ascii_identifiers = random.sample(string.ascii_letters, num_nodes)
@@ -26,6 +26,7 @@ def generate_isomorphic_graphs(num_nodes):
 
     return G1, G2, pos1, pos2
 
+#Coloring function for a node
 
 def color_node(G, key, g_color_mapping, random_modifier, disableRandomness):
     oneCount = sum(1 for neighbor in G.neighbors(key) if G.nodes[neighbor].get('label', 1) == 1)
@@ -80,7 +81,7 @@ def compare_color_distributions(color_mapping1, color_mapping2):
         1 for color in color_mapping2.values() if color == 'yellow')
     )
 
-
+#This is the main function to get output
 def get_images(iter_number, stability_threshold=1000, color_change_threshold=1000,
                random_modifier=0.001, node_size=15, disableRandomness=False, isTestInstance=False):
     try:
